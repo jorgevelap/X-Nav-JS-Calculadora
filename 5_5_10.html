@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+   <head>
+
+	<style type="text/css">
+		#Pantalla { width: 235px; border: 2px black solid; text-align: right; 
+				         position: relative; font-family: "Times New Roman";}
+	</style>
+
+
+
+     <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+     <title>Simple calculator</title>
+     <script type="text/javascript" charset="utf-8">
+	   var numvariable=0;
+
+	   function sumButton(optag){
+			 if(numvariable==0){
+			  numvariable=1;
+              var operation = document.getElementById(optag);
+		 	  changer (optag, operation.innerHTML + '+');
+			}
+	   }	   		
+
+
+	   function changeNumber0(optag){
+          if(numvariable ==1){
+              var operation = document.getElementById(optag);
+         	  var operands = operation.innerHTML.split ("+");
+		 	  changer (optag, operands[0] + "+" + 0);
+		  }else{
+		  	  changer (optag, 0);
+		  }
+	   }
+
+	   function changeNumber1(optag){
+          if(numvariable ==1){
+              var operation = document.getElementById(optag);
+         	  var operands = operation.innerHTML.split ("+");
+		 	  changer (optag, operands[0] + "+" + 1);
+		  }else{
+		  	  changer (optag, 1);
+
+		  }
+	   }
+
+
+       function changer (id, newValue) {
+         var element = document.getElementById(id);
+         element.innerHTML = newValue;
+	     document.getElementById("textoPantalla").innetHTML= "ñlkasd";
+       }
+
+       function equal (optag) {
+         var operation = document.getElementById(optag);
+         var operands = operation.innerHTML.split ("+");
+         var result = parseInt(operands[0]) ^
+             parseInt(operands[1]);
+
+         changer (optag, result);
+		numvariable=0;
+       }
+
+     </script>
+   </head>
+   <body>
+	 <p id="Pantalla"><span id='op'></p>
+
+	<input type="button" value="1" onclick="changeNumber1('op')" />
+	<input type="button" value="0" onclick="changeNumber0('op')" />
+	<input type="button" value="+" onclick="sumButton('op')" />
+	<input type="button" value="=" onclick="equal('op')" />
+   </body>
+</html>
+
